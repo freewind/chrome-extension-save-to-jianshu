@@ -1,15 +1,23 @@
 {
-  "manifest_version": 2,
-
-  "name": "Get url of current tag",
-  "description": "This extension will alert the url of current tag",
-  "version": "1.0",
-
-  "browser_action": {
-    "default_icon": "icon.png",
-    "default_popup": "hello.html"
-  },
-  "permissions": [
-    "activeTab"
-  ]
+    "manifest_version": 2,
+    "name": "save-to-jianshu",
+    "description": "save-to-jianshu",
+    "version": "1.0",
+    "background": {
+        "scripts": [
+            "context-menu-save-to-jianshu.js"
+        ]
+    },
+    "web_accessible_resources": [
+        "functions-in-jianshu-page.js"
+    ],
+    "content_scripts": [{
+        "matches": ["<all_urls>"],
+        "js": ["selection-sender.js"]
+    }],
+    "permissions": [
+        "contextMenus",
+        "tabs",
+        "<all_urls>"
+    ]
 }
